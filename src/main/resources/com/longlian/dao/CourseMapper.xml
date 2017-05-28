@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.longlian.dao.CourseMapper">
+
+  <resultMap id="BaseResultMap" type="com.longlian.model.Course">
+    <id column="ID" jdbcType="BIGINT" property="id" />
+    <result column="ROOM_ID" jdbcType="BIGINT" property="roomId" />
+    <result column="APP_ID" jdbcType="BIGINT" property="appId" />
+    <result column="LIVE_TOPIC" jdbcType="VARCHAR" property="liveTopic" />
+    <result column="REMARK" jdbcType="VARCHAR" property="remark" />
+    <result column="LIVE_WAY" jdbcType="VARCHAR" property="liveWay" />
+    <result column="LIVE_TYPE" jdbcType="VARCHAR" property="liveType" />
+    <result column="LIVE_PWD" jdbcType="VARCHAR" property="livePwd" />
+    <result column="DIVIDE_SCALE" jdbcType="VARCHAR" property="divideScale" />
+    <result column="COVERSS_ADDRESS" jdbcType="VARCHAR" property="coverssAddress" />
+    <result column="CHARGE_AMT" jdbcType="DECIMAL" property="chargeAmt" />
+    <result column="START_TIME" jdbcType="TIMESTAMP" property="startTime" />
+    <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="STATUS" jdbcType="VARCHAR" property="status" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="ORDER_SORT" jdbcType="INTEGER" property="orderSort" />
+    <result column="COURSE_TYPE" jdbcType="BIGINT" property="courseType" />
+    <result column="PUSH_PRAISE_COUNT" jdbcType="INTEGER" property="pushPraiseCount" />
+    <result column="VISIT_COUNT" jdbcType="INTEGER" property="visitCount" />
+    <result column="JOIN_COUNT" jdbcType="INTEGER" property="joinCount" />
+    <result column="STUDY_COUNT" jdbcType="INTEGER" property="studyCount" />
+    <result column="COMMENT_COUNT" jdbcType="INTEGER" property="commentCount" />
+    <result column="END_TIME"  property="endTime" />
+    <result column="LIVE_ADDRESS"  property="liveAddress" />
+    <result column="PUSH_ADDRESS"  property="pushAddress" />
+    <result column="VIDEO_ADDRESS"  property="videoAddress" />
+    <result column="RECO_TIME"  property="recoTime" />
+    <result column="HLS_LIVE_ADDRESS"  property="hlsLiveAddress" />
+    <result column="CHAT_ROOM_ID"  property="chatRoomId" />
+    <result column="IS_SERIES_COURSE" property="isSeriesCourse"/>
+    <result column="SERIES_COURSE_ID" property="seriesCourseId"/>
+    <result column="COURSE_PLAN_COUNT" property="coursePlanCount"/>
+    <result column="UPDATED_COUNT" property="updatedCount"/>
+    <result column="ENDED_COUNT" property="endedCount"/>
+    <result column="IS_DELETE" property="isDelete"/>
+  </resultMap>
+
+  <resultMap id="BaseResultAndUserMap" type="java.util.Map" extends="BaseResultMap">
+    <result column="USER_NAME"  property="userName" />
+    <result column="PHOTO"  property="photo" />
+    <result column="GENDER"  property="gender" />
+    <result column="FOLLOW_COUNT"  property="followCount" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    ID, ROOM_ID, APP_ID, LIVE_TOPIC, REMARK, LIVE_WAY, LIVE_TYPE, LIVE_PWD, DIVIDE_SCALE, 
+    COVERSS_ADDRESS, CHARGE_AMT, START_TIME, UPDATE_TIME, STATUS, CREATE_TIME, ORDER_SORT, 
+    COURSE_TYPE, PUSH_PRAISE_COUNT, VISIT_COUNT, JOIN_COUNT, STUDY_COUNT, COMMENT_COUNT , END_TIME ,LIVE_ADDRESS, PUSH_ADDRESS ,VIDEO_ADDRESS ,  RECO_TIME ,HLS_LIVE_ADDRESS, CHAT_ROOM_ID
+    ,IS_SERIES_COURSE,SERIES_COURSE_ID,COURSE_PLAN_COUNT,UPDATED_COUNT
+  </sql>
+
+
+
+  <select id="getCourse" resultMap="BaseResultMap">
+    SELECT *
+    FROM course c
+
+    WHERE c.ID = #{id}
+
+  </select>
+  <update id="updateVideoAddr" parameterType="com.longlian.model.Course">
+    update course
+    set
+    VIDEO_ADDRESS =  #{videoAddress}
+    where ID = #{id}
+  </update>
+
+
+  <update id="addVisitCount" >
+    update course
+    set
+    VISIT_COUNT = VISIT_COUNT + 1
+    where ID = #{id}
+  </update>
+
+  <update id="update" parameterType="com.longlian.model.Course">
+    update course
+    set
+    START_TIME = #{startTime}
+    , END_TIME = #{endTime}
+    , UPDATED_COUNT =  #{updatedCount}
+    , ENDED_COUNT =   #{endedCount}
+    where ID = #{id}
+  </update>
+</mapper>
