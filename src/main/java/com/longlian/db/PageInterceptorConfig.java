@@ -27,7 +27,6 @@ public class PageInterceptorConfig {
         p.setProperty("offsetAsPageNum", "true");
         p.setProperty("rowBoundsWithCount", "true");
         p.setProperty("reasonable", "true");
-       // p.setProperty("dialect","mysql");
         pageInterceptor.setProperties(p);
         return pageInterceptor;
     }
