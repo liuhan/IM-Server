@@ -1,6 +1,7 @@
 ﻿#以下是不需要git进行版本控制的文件
 .idea
 classes
+build
 .gitignore.swp
 *.iml
 .gradle
@@ -8,10 +9,4 @@ gradle
 .classpath
 .project
 out
-gradlew
-gradlew.bat
-build
 log.log
-classes
-.sonar
-.settings
