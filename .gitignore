@@ -10,7 +10,7 @@ gradle
 out
 gradlew
 gradlew.bat
-/build/
+build
 log.log
 classes
 .sonar
