@@ -1,10 +1,10 @@
 ﻿#以下是不需要git进行版本控制的文件
-.idea
-classes
-build
+/.idea/*
+/classes/*
+/build/*
 .gitignore.swp
 *.iml
-.gradle
+/.gradle/*
 gradle
 .classpath
 .project
